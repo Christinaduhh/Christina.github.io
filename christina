@@ -1,0 +1,71 @@
+let direction_h
+let direction_v
+let score
+let x
+let y
+let c
+let m
+let d
+let h
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  x=50
+  y=55
+  direction_h=1
+  direction_v=1
+  c=25
+  m=40
+  direction_h=1
+  direction_v=1
+  d=50
+  h=45
+  
+  score=0
+}
+
+function draw() {
+  background(177,149,209);
+  fill(224, 157, 173);
+  circle(x,y,90);
+  fill(34,157, 173);
+  circle(c,m,50);
+  fill(100,70, 153);
+  circle(d,h,70);
+  textSize(30)
+  text(score,200,255);
+  //x= x+1
+  //y= y+1
+  c= c+5*direction_h
+  m= m+5*direction_v
+  
+  d= d+10*direction_h
+  h= h+5*direction_v
+  
+  
+  if(keyIsDown(LEFT_ARROW)) {
+    x=x-10 
+}
+ if(keyIsDown(RIGHT_ARROW)) {
+    x=x+10
+}
+  if(keyIsDown(UP_ARROW)) {
+    y = y-18
+}
+   if(keyIsDown(DOWN_ARROW)) {
+    y = y+18
+ } 
+ if (c > width || c<0) {
+	direction_h= direction_h*-1
+}
+   if (m > height || m<0) {
+	direction_v= direction_v*-1
+     
+} if (dist(x,y,c,m)<50+90){ 
+   score= score-10
+  
+} if (dist(x,y,d,h)<50+90){ 
+   score= score+10       
+}
+  
+}
